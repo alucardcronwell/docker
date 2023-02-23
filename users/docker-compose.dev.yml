@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+   users:
+      build:
+         context: .
+      image: nodejs
+      ports:
+         - 8005:8000
+         - 9230:9230
+      environment:
+         - SERVER_PORT=8000
+         - CONNECTIONSTRING=mongodb://mongo:27017/users
+      volumes:
+         - ./:/app
+         - /app/node_modules
+   mongo:
+      image: mongo:latest
+      ports:
+         - 28017:27017
+      volumes:
+         - mongodb:/data/db
+         - mongodb_config:/data/configdb
+volumes:
+   mongodb:
+   mongodb_config:
