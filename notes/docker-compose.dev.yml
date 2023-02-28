@@ -2,8 +2,6 @@ version: '3.8'
 
 services:
    notes:
-      build:
-         context: .
       image: nodejs
       ports:
          - 8000:8000
